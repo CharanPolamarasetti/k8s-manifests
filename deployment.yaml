@@ -42,16 +42,23 @@ spec:
                   name: db-secret
                   key: DB_PASSWORD
                 
+        startupProbe:
+          httpGet:
+            path: /
+            port: 8080
+          failureThreshold: 30      # 30 attempts * 5s = 150s startup window allowed
+          periodSeconds: 5
+        
         livenessProbe:
           httpGet:
             path: /
             port: 8080
-          initialDelaySeconds: 30
-          periodSeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 3
 
         readinessProbe:
           httpGet:
             path: /
             port: 8080
-          initialDelaySeconds: 10
           periodSeconds: 5
+          timeoutSeconds: 3
