@@ -4,7 +4,7 @@ metadata:
   name: javaapp-service
   namespace: prod-namespace
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: javaapp
   ports:
