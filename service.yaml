@@ -10,4 +10,3 @@ spec:
   ports:
   - port: 1101
     targetPort: 8080
-    nodePort: 31999
