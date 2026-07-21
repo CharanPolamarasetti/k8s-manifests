@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: javaapp
+  namespace: prod-namespace
+spec:
+  selector:
+    matchLabels:
+      app: javaapp
+  template:
+    metadata:
+      labels:
+        app: javaapp
+    spec:
+      containers:
+      - name: appcontainer
+        image: 285065163560.dkr.ecr.us-east-2.amazonaws.com/apprepo:1.0
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 200m
+            memory: 256Mi
+        ports:
+        - containerPort: 80
