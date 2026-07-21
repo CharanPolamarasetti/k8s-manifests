@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: dbservice
+  name: dbservice             
   namespace: prod-namespace
 spec:
-  clusterIP: None
+  clusterIP: None              
   selector:
-    app: javaapp-database
+    app: javaapp-database      
   ports:
     - port: 3306
       targetPort: 3306
