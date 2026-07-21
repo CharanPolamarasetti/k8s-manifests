@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+  namespace: prod-namespace
+
+spec:
+  serviceName: dbservice
+
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: javaapp-database
+
+  template:
+    metadata:
+      labels:
+        app: javaapp-database
+
+    spec:
+      containers:
+        - name: dbcontainer
+          image: 285065163560.dkr.ecr.us-east-2.amazonaws.com/dbrepo:1.0
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
+          ports:
+            - containerPort: 3306
+              name: mysql

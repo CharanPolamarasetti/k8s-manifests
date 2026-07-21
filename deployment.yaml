@@ -4,6 +4,7 @@ metadata:
   name: javaapp
   namespace: prod-namespace
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: javaapp
