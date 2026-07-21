@@ -4,9 +4,10 @@ metadata:
   name: javaapp
   namespace: prod-namespace
 spec:
+  type: LoadBalancer
   selector:
     app: javaapp
   ports:
   - port: 1101
-    targetPort: 80
+    targetPort: 8080
     nodePort: 31999
